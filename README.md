@@ -1,24 +1,7 @@
-# README
+This is the MVP of the Shopright Application.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Shopright is an application that helps users decide what they'd like to eat by displaying a menu of common meals (sorted by Vegetarian, Vegan and Omnivore). Users can then choose which meals they'd like to eat for the week (or occasion) and the ingredients for those meals will be added to a shopping list.
 
-Things you may want to cover:
+Users can then add items (like milk/bread etc) or delete items/ingredients that they already have.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Once satisfied with their shopping list, users can then share the shopping list as an email.
