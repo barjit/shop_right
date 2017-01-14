@@ -31,6 +31,25 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autocomplete: "on" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autocomplete: "on" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :menu_choice %><br />
+    <%= f.text_field :menu_choice, autocomplete: "on" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
