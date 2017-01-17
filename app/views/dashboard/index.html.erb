@@ -1,0 +1,7 @@
+<p>Dashboard#index - Find me in app/views/dashboard/index.html.erb</p>
+
+<h1>Welcome back, <%= current_user.first_name %>!</h1>
+
+<p>If you'd like to edit your information, click <%= link_to "HERE", edit_user_registration_path %> </p>
+
+<p>To sign out, click <%= link_to "HERE", destroy_user_session_path, data: { confirm: "Are you sure?" }, method: :delete %></p>
