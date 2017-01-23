@@ -48,11 +48,12 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-#Other Gems
+#Added Gems
 
 gem 'devise'
 gem 'rails_admin'
-
+gem 'paperclip'
+gem 'cancancan'
 
 
 
