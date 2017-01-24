@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123092704) do
+ActiveRecord::Schema.define(version: 20170124080540) do
+
+  create_table "meals", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "method"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "meal_image_file_name"
+    t.string   "meal_image_content_type"
+    t.integer  "meal_image_file_size"
+    t.datetime "meal_image_updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
