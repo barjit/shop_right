@@ -17,5 +17,10 @@
   <%= @meal.method %>
 </p>
 
-<%= link_to 'Edit', edit_meal_path(@meal) %> |
-<%= link_to 'Back', meals_path %>
+
+<% if can? :update, Meal %>
+  <%= link_to 'Edit', edit_meal_path(@meal) %> |
+  <%= link_to 'Back', meals_path %>
+<% else %>
+  <%= link_to 'Back', meals_path %>
+<% end %>
