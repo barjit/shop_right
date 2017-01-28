@@ -6,11 +6,12 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
     if user.admin_role?
-      can :manage, :all
+      can :manage, Meal
       can :access, :rails_admin
     else
       can :read, :all
     end
+
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

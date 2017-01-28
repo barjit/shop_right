@@ -1,4 +1,7 @@
 class MealsController < ApplicationController
+
+  load_and_authorize_resource
+  
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   # GET /meals
