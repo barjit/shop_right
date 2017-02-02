@@ -54,6 +54,7 @@ gem 'devise'
 gem 'rails_admin'
 gem 'paperclip'
 gem 'cancancan'
+#gem 'acts_as_taggable_on'
 
 
 
