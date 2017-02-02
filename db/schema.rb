@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124080540) do
+ActiveRecord::Schema.define(version: 20170202081008) do
+
+  create_table "ingredient_quantities", force: :cascade do |t|
+    t.integer  "meal_id"
+    t.integer  "ingredient_id"
+    t.float    "quantity"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["ingredient_id"], name: "index_ingredient_quantities_on_ingredient_id"
+    t.index ["meal_id"], name: "index_ingredient_quantities_on_meal_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "meals", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170124080540) do
     t.datetime "updated_at",                          null: false
     t.boolean  "admin_role"
     t.boolean  "user_role"
+    t.integer  "preference"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

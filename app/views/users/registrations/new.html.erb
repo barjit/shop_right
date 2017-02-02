@@ -34,8 +34,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :menu_choice %><br />
-    <%= f.text_field :menu_choice, autocomplete: "on" %>
+    <%= f.label :preference %><br />
+    <%= f.select :preference, options_for_select([["Omnivore", "omnivore"],["Vegetarian", "vegetarian"], ["Vegan", "vegan"], ["Paleo", "paleo"]]) %>
   </div>
 
   <div class="actions">
