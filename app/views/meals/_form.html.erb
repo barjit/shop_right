@@ -35,6 +35,11 @@
     <%= f.text_area :method %>
   </div>
 
+  <div class="field">
+    <%= f.label :diet %><br />
+    <%= f.select :diet, options_for_select([["Omnivore", "omnivore"],["Vegetarian", "vegetarian"], ["Vegan", "vegan"], ["Paleo", "paleo"]]) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
