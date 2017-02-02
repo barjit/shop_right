@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   
 
+  resources :ingredient_quantities
   resources :ingredients
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
