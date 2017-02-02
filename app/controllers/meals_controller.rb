@@ -7,7 +7,7 @@ class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
   def index
-    @meals = Meal.all
+    @meals = Meal.all.select {|meal| meal.diet == current_user.preference}
   end
 
   # GET /meals/1
