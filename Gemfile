@@ -20,6 +20,8 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  #also added
+  gem 'awesome_print', :require => 'ap'
 end
 
 
@@ -36,6 +38,8 @@ gem 'devise'
 gem 'rails_admin'
 gem 'paperclip'
 gem 'cancancan'
+gem 'bootstrap-sass', '3.3.6'
+
 
 
 

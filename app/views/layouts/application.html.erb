@@ -6,17 +6,19 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <%= render 'layouts/shim' %>
   </head>
 
   <body>
-  <!-- start devise initial config -->
 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+    <%= render 'layouts/header' %>
 
-  <!-- end devise initial config -->
+    <%= render 'layouts/devise_notice_alert' %>
 
-    <%= yield %>
-    
+    <div class="container"
+      <%= yield %>
+    </div>
+
   </body>
 </html>
