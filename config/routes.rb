@@ -8,7 +8,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :meals
+  resources :meals do
+    resources :ingredients
+  end
+
   
   devise_for :users, controllers: {   
     sessions: 'users/sessions',   

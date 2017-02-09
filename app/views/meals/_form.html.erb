@@ -31,6 +31,27 @@
   </div>
 
   <div class="field">
+    <%= f.fields_for :ingredients do | builder | %>
+      
+      <div class="field">
+        <%= builder.label :name %>
+        <%= builder.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= builder.label :quantity %>
+        <%= builder.text_field :quantity %>
+      </div>
+
+      <div class="field">
+        <%= builder.label :unit %>
+        <%= builder.text_field :unit %>
+      </div>
+
+    <% end %>
+  </div>  
+
+  <div class="field">
     <%= f.label :method %>
     <%= f.text_area :method %>
   </div>

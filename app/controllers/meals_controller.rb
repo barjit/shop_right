@@ -18,10 +18,12 @@ class MealsController < ApplicationController
   # GET /meals/new
   def new
     @meal = Meal.new
+    @meal.ingredients.build
   end
 
   # GET /meals/1/edit
   def edit
+    @meal.ingredients.build
   end
 
   # POST /meals
@@ -72,6 +74,6 @@ class MealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
-      params.require(:meal).permit(:name, :description, :method, :meal_image, :diet)
+      params.require(:meal).permit(:name, :description, :method, :meal_image, :diet, ingredients_attributes: [:name, :quantity, :unit])
     end
 end

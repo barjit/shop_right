@@ -5,4 +5,8 @@ class Meal < ApplicationRecord
     } 
 
   enum diet: [:omnivore, :vegetarian, :vegan, :paleo]
+
+  has_many :ingredients
+
+  accepts_nested_attributes_for :ingredients
 end
