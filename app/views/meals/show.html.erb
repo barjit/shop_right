@@ -12,6 +12,34 @@
   <%= @meal.description %>
 </p>
 
+<!-- Ingredients -->
+<p>
+	<strong>Ingredients:</strong>
+	<table>
+	  <thead>
+	    <tr>   
+	      <th>Quantity</th>
+	      <th>Unit</th>
+	      <th>Name</th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% @ingredients.each do |ingredient| %>
+	      <tr> 
+	        <td><%= ingredient.quantity %></td>
+	        <td><%= ingredient.unit %></td>
+	        <td><%= ingredient.name %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	</p>
+
+<!-- ______________ -->
+
+
 <p>
   <strong>Method:</strong>
   <%= @meal.method %>

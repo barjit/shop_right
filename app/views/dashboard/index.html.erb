@@ -2,9 +2,4 @@
 
 <h1>Welcome back, <%= current_user.first_name %>!</h1>
 
-<p>Your preferred diet is <%= current_user.preference %></p>
-
-<p>If you'd like to edit your information, click <%= link_to "HERE", edit_user_registration_path %> </p>
-
-<p>If you'd like to view meals available, click <%= link_to "HERE", meals_path %> </p>
-
+<p>Your preferred diet is <%= current_user.preference %> :--> <%= link_to "change", edit_user_registration_path %> </p>

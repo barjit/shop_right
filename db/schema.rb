@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209080117) do
+ActiveRecord::Schema.define(version: 20170212015145) do
 
   create_table "ingredients", force: :cascade do |t|
     t.integer  "meal_id"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 20170209080117) do
     t.string   "last_sign_in_ip"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "menu_choice"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "admin_role"

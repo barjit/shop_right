@@ -30,26 +30,34 @@
     <%= f.text_area :description %>
   </div>
 
-  <div class="field">
-    <%= f.fields_for :ingredients do | builder | %>
+<!-- Add ingredients -->
+
+  <div class="container">
+    <hr>
+    <h3>Add ingredients</h3>
+
+    <%= f.fields_for :ingredients do | ingredient | %>
       
       <div class="field">
-        <%= builder.label :name %>
-        <%= builder.text_field :name %>
+        <%= ingredient.label :name %>
+        <%= ingredient.text_field :name %>
       </div>
 
       <div class="field">
-        <%= builder.label :quantity %>
-        <%= builder.text_field :quantity %>
+        <%= ingredient.label :quantity %>
+        <%= ingredient.text_field :quantity %>
       </div>
 
       <div class="field">
-        <%= builder.label :unit %>
-        <%= builder.text_field :unit %>
+        <%= ingredient.label :unit %>
+        <%= ingredient.select :unit, options_for_select([["g", "grams"], ["cups", "cups"], ["ml", "millilitres"], ["cans", "cans"], ]) %>
       </div>
 
     <% end %>
-  </div>  
+  </div> 
+  <hr>
+
+<!-- ____________________ -->
 
   <div class="field">
     <%= f.label :method %>
