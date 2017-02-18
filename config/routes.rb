@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  post 'shopping_list/create'
+
   resources :meals do
     resources :ingredients
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212015145) do
+ActiveRecord::Schema.define(version: 20170214075219) do
 
   create_table "ingredients", force: :cascade do |t|
     t.integer  "meal_id"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20170212015145) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meal_id"], name: "index_ingredients_on_meal_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "shopping_list_id"
+    t.string   "name"
+    t.float    "quantity"
+    t.integer  "unit"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["shopping_list_id"], name: "index_items_on_shopping_list_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -33,6 +43,12 @@ ActiveRecord::Schema.define(version: 20170212015145) do
     t.integer  "meal_image_file_size"
     t.datetime "meal_image_updated_at"
     t.integer  "diet"
+  end
+
+  create_table "shopping_lists", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

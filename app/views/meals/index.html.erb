@@ -13,28 +13,40 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @meals.each do |meal| %>
-      <tr>
-        <td><%= image_tag meal.meal_image(:medium) %></td>
-        <td><%= meal.name %></td>
-        <td><%= meal.description %></td>
-        <td><%= meal.method %></td>
-        <td><%= link_to 'Show', meal %></td>
-        <td>
-        <% if can? :update, Meal %>
-          <%= link_to 'Edit', edit_meal_path(meal) %>
-        <% end %>
-        </td>
-        <td>
-        <% if can? :destroy, Meal %>    
-          <%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+
+    <tbody>
+      <% @meals.each do |meal| %>
+        <tr>
+          <td><%= image_tag meal.meal_image(:medium) %></td>
+          <td><%= meal.name %></td>
+          <td><%= meal.description %></td>
+          <td><%= meal.method %></td>
+          <td><%= link_to 'Show', meal %></td>
+          <td>
+          <% if can? :update, Meal %>
+            <%= link_to 'Edit', edit_meal_path(meal) %>
+          <% end %>
+          </td>
+          <td>
+          <% if can? :destroy, Meal %>    
+            <%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+          </td>
+          
+        </tr>        
+      <% end %>
+    </tbody>
 </table>
+
+  <%= form_for :shopping_list, url: shopping_list_create_path do |f| %>
+    <%= f.collection_check_boxes :meal_ids, Meal.all, :id, :name  do |b|%>
+      <%= b.label class:"label-checkbox" do%>
+         <%=b.check_box + b.text%>
+        <%end%>
+    <% end %>
+
+    <%= f.submit "Create Shopping List" %>
+<% end %>
 
 <br>
 
