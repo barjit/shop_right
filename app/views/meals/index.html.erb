@@ -42,11 +42,11 @@
     <%= f.collection_check_boxes :meal_ids, Meal.all, :id, :name  do |b|%>
       <%= b.label class:"label-checkbox" do%>
          <%=b.check_box + b.text%>
-        <%end%>
+      <%end%>
     <% end %>
 
     <%= f.submit "Create Shopping List" %>
-<% end %>
+  <% end %>
 
 <br>
 
