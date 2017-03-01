@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shopping Lists:</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% @shopping_lists.each do |list| %>
+        <tr>
+       
+          <td><%= list.name %></td>
+          <td><%= link_to 'Show', list %></td>
+          <td>
+          <% if can? :update, ShoppingList %>
+            <%= link_to 'Edit', edit_shopping_list_path(list) %>
+          <% end %>
+          </td>
+          <td>
+          <% if can? :destroy, ShoppingList %>    
+            <%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+          </td>
+          
+        </tr>        
+      <% end %>
+    </tbody>
+</table>
