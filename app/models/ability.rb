@@ -7,6 +7,9 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin_role?
       can :manage, Meal
+      can :manage, Ingredient
+      can :manage, ShoppingList
+      can :manage, Item
       can :access, :rails_admin
     else
       can :read, :all
