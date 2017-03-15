@@ -6,6 +6,7 @@ class ShoppingListsController < ApplicationController
 
   def show
     @shopping_list = ShoppingList.find(params[:id])
+
   end
 
   def create
@@ -26,6 +27,7 @@ class ShoppingListsController < ApplicationController
   private
 
     def shopping_list_params
-      params.require(:shopping_list).permit(:name)
+      params.require(:shopping_list).permit(:name, :meal_ids)
     end
 end
+

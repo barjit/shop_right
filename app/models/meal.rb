@@ -6,8 +6,9 @@ class Meal < ApplicationRecord
 
   enum diet: [:omnivore, :vegetarian, :vegan, :paleo]
 
+  belongs_to :shopping_list
+
   has_many :ingredients
   accepts_nested_attributes_for :ingredients
 
-  belongs_to :shopping_list
 end

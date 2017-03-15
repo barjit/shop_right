@@ -8,7 +8,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :shopping_lists
+  resources :shopping_lists do
+    resources :items
+  end
+
 
   resources :meals do
     resources :ingredients

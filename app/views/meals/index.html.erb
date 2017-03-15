@@ -38,7 +38,7 @@
     </tbody>
 </table>
 
-  <%= form_for :shopping_list do |f| %>
+  <%= form_for :shopping_list, url: shopping_lists_path do |f| %>
     <%= f.collection_check_boxes :meal_ids, Meal.all, :id, :name  do |b|%>
       <%= b.label class:"label-checkbox" do%>
          <%=b.check_box + b.text%>
@@ -48,10 +48,29 @@
     <%= f.submit "Create Shopping List" %>
   <% end %>
 
+  
+
 <br>
 
 <% if can? :create, Meal %>
   <%= link_to 'New Meal', new_meal_path %>
 <% end %>
 
-<!-- url: shopping_list_create_path -->
+
+
+
+
+
+
+<!-- Don't use -->
+ 
+<%#= form_for :shopping_list, url: shopping_list_path do |f| %>
+    <%#= f.collection_check_boxes :shopping_list, Meal.all, :id, :name  do |b|%>
+      <%#= b.label class:"label-checkbox" do%>
+         <%#=b.check_box + b.text%>
+      <%#end%>
+    <%# end %>
+
+    <%#= f.submit "Create a Shopping List" %>
+  <%# end %>
+
