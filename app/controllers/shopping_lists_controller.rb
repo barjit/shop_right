@@ -11,6 +11,7 @@ class ShoppingListsController < ApplicationController
 ##############################################
 
   def show
+    @ingredients = @shopping_list.meals.map(&:ingredients).flatten
   end
 
 ##############################################
@@ -64,7 +65,7 @@ class ShoppingListsController < ApplicationController
 
 
     def shopping_list_params
-      params.require(:shopping_list).permit(:name, meal_attributes: [:meal_ids, :name, :description])
+      params.require(:shopping_list).permit(:name, meal_attributes: [:meal_ids, :name, :description, :method, :meal_image, :diet, ingredients_attributes: [:name, :quantity, :unit]])
     end
 end
 
