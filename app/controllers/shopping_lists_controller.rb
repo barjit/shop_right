@@ -11,7 +11,7 @@ class ShoppingListsController < ApplicationController
 ##############################################
 
   def show
-    @ingredients = @shopping_list.meals.map(&:ingredients).flatten
+    @items = @shopping_list.items
   end
 
 ##############################################

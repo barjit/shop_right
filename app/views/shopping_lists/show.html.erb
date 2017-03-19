@@ -16,11 +16,11 @@
 	  </thead>
 
 	  <tbody>
-	    <% @ingredients.each do |ingredient| %>
+	    <% @items.each do |item| %>
 	      <tr> 
-	        <td><%= ingredient.quantity %></td>
-	        <td><%= ingredient.unit %></td>
-	        <td><%= ingredient.name %></td>
+	        <td><%= item.quantity %></td>
+	        <td><%= item.unit %></td>
+	        <td><%= item.name %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>
