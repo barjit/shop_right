@@ -17,6 +17,10 @@ class ShoppingListsController < ApplicationController
 ##############################################
 
   def create
+    #new
+    @meal = Meal.find(params[:id])
+    ####
+
     @shopping_list = ShoppingList.new(shopping_list_params)
 
      respond_to do |format|
