@@ -18,7 +18,9 @@ class ShoppingListsController < ApplicationController
 
   def create
     #new
-    @meal = Meal.find(params[:id])
+    @meals = params[:meal_ids]
+    
+
     ####
 
     @shopping_list = ShoppingList.new(shopping_list_params)

@@ -38,15 +38,15 @@
     </tbody>
 </table>
 
-  <%= form_for :shopping_list, url: shopping_lists_path do |f| %>
-    <%= f.collection_check_boxes :meal_ids, Meal.all, :id, :name  do |b|%>
-      <%= b.label class:"label-checkbox" do%>
-         <%=b.check_box + b.text%>
-      <%end%>
-    <% end %>
-
-    <%= f.submit "Create Shopping List" %>
+<%= form_for :shopping_list, url: shopping_lists_path do |f| %>
+  <%= f.collection_check_boxes :shopping_list, :meal_ids, Meal.all, :id, :name  do |b|%>
+    <%= b.label class:"label-checkbox" do%>
+       <%=b.check_box + b.text%>
+    <%end%>
   <% end %>
+
+  <%= f.submit "Create Shopping List" %>
+<% end %>
 
   
 
