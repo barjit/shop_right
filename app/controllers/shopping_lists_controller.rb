@@ -17,13 +17,20 @@ class ShoppingListsController < ApplicationController
 ##############################################
 
   def create
-    #new
-    @meals = params[:meal_ids]
-    
-
-    ####
 
     @shopping_list = ShoppingList.new(shopping_list_params)
+
+    #something along these lines:
+    @meals = Meal.where(id:[@shopping_list.meal_ids])
+
+    #@meals = Meal.where(id: ) ==  @shopping_list[:meal_ids]
+    ###
+
+    @items = @meals.map do |meal|
+      meal.ingredients.map do |ingredient|
+        Item.create(name: ingredient.name, quantity: ingredient.quantity, unit: ingredient.unit, shopping_list_id: @shopping_list.id)
+      end
+    end
 
      respond_to do |format|
       if @shopping_list.save
@@ -71,7 +78,8 @@ class ShoppingListsController < ApplicationController
 
 
     def shopping_list_params
-      params.require(:shopping_list).permit(:name, meal_attributes: [:meal_ids, :name, :description, :method, :meal_image, :diet, ingredients_attributes: [:name, :quantity, :unit]])
+      params.require(:shopping_list).permit(:name, :meal_ids => [])
     end
 end
 
+#meal_attributes: [:meal_ids, :name, :description, :method, :meal_image, :diet, ingredients_attributes: [:name, :quantity, :unit]]
