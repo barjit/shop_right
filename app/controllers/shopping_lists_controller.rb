@@ -20,11 +20,7 @@ class ShoppingListsController < ApplicationController
 
     @shopping_list = ShoppingList.new(shopping_list_params)
 
-    #something along these lines:
     @meals = Meal.where(id:[@shopping_list.meal_ids])
-
-    #@meals = Meal.where(id: ) ==  @shopping_list[:meal_ids]
-    ###
 
     @items = @meals.map do |meal|
       meal.ingredients.map do |ingredient|
