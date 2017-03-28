@@ -19,7 +19,7 @@ class ShoppingListsController < ApplicationController
   def create
 
     @shopping_list = ShoppingList.new(shopping_list_params)
-
+    
     @meals = Meal.where(id:[@shopping_list.meal_ids])
 
     @items = @meals.map do |meal|
