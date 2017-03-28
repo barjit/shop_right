@@ -22,7 +22,7 @@ class MealsController < ApplicationController
 
   # GET /meals/new
   def new
-    @meal = Meal.new
+    #@meal = Meal.new
     @meal.ingredients.build
   end
 

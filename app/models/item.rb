@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  belongs_to :shopping_list
+  has_one :shopping_list
 
   enum unit: [:grams, :cups, :millilitres, :cans]
 end

@@ -12,6 +12,8 @@ class ShoppingListsController < ApplicationController
 
   def show
     @items = @shopping_list.items
+    
+
   end
 
 ##############################################
@@ -19,6 +21,8 @@ class ShoppingListsController < ApplicationController
   def create
 
     @shopping_list = ShoppingList.new(shopping_list_params)
+    
+    @shopping_list.items.build
     
     @meals = Meal.where(id:[@shopping_list.meal_ids])
 
@@ -28,7 +32,7 @@ class ShoppingListsController < ApplicationController
       end
     end
 
-     respond_to do |format|
+    respond_to do |format|
       if @shopping_list.save
         format.html { redirect_to @shopping_list, notice: 'Shopping List was successfully created.' }
         format.json { render :show, status: :created, location: @shopping_list }
@@ -74,8 +78,10 @@ class ShoppingListsController < ApplicationController
 
 
     def shopping_list_params
-      params.require(:shopping_list).permit(:name, :meal_ids => [])
+      params.require(:shopping_list).permit(:name, {meal_ids: []})
     end
 end
+
+#:meal_ids => []
 
 #meal_attributes: [:meal_ids, :name, :description, :method, :meal_image, :diet, ingredients_attributes: [:name, :quantity, :unit]]
