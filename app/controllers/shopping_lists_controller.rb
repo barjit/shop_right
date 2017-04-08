@@ -12,8 +12,6 @@ class ShoppingListsController < ApplicationController
 
   def show
     @items = @shopping_list.items
-    
-
   end
 
 ##############################################
@@ -21,16 +19,16 @@ class ShoppingListsController < ApplicationController
   def create
 
     @shopping_list = ShoppingList.new(shopping_list_params)
-    
-    @shopping_list.items.build
-    
-    @meals = Meal.where(id:[@shopping_list.meal_ids])
 
-    @items = @meals.map do |meal|
-      meal.ingredients.map do |ingredient|
-        Item.create(name: ingredient.name, quantity: ingredient.quantity, unit: ingredient.unit, shopping_list_id: @shopping_list.id)
+    #def create_items
+      @meals = Meal.where(id:[@shopping_list.meal_ids])
+      @meals.map do |meal|
+        meal.ingredients.map do |ingredient|
+          @shopping_list.items.build(name: ingredient.name, quantity: ingredient.quantity, unit: ingredient.unit, shopping_list_id: @shopping_list.id)
+        end
       end
-    end
+      
+    #end
 
     respond_to do |format|
       if @shopping_list.save
@@ -40,7 +38,7 @@ class ShoppingListsController < ApplicationController
         format.html { render :new }
         format.json { render json: @shopping_list.errors, status: :unprocessable_entity }
       end
-    end
+    end 
 
   end
 
@@ -78,10 +76,12 @@ class ShoppingListsController < ApplicationController
 
 
     def shopping_list_params
-      params.require(:shopping_list).permit(:name, {meal_ids: []})
+      params.require(:shopping_list).permit(:name, {items_attributes: [:shopping_list_id, :name, :quantity, :unit]}, {meal_ids: []})
     end
+
 end
 
 #:meal_ids => []
 
 #meal_attributes: [:meal_ids, :name, :description, :method, :meal_image, :diet, ingredients_attributes: [:name, :quantity, :unit]]
+
