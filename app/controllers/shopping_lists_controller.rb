@@ -18,17 +18,15 @@ class ShoppingListsController < ApplicationController
 
   def create
 
-    @shopping_list = ShoppingList.new(shopping_list_params)
+    @shopping_list = ShoppingList.create(shopping_list_params)
 
-    #def create_items
-      @meals = Meal.where(id:[@shopping_list.meal_ids])
-      @meals.map do |meal|
-        meal.ingredients.map do |ingredient|
-          @shopping_list.items.build(name: ingredient.name, quantity: ingredient.quantity, unit: ingredient.unit, shopping_list_id: @shopping_list.id)
-        end
+    @meals = Meal.where(id:[@shopping_list.meal_ids])
+    @meals.map do |meal|
+      meal.ingredients.map do |ingredient|
+        @shopping_list.items.build(name: ingredient.name, quantity: ingredient.quantity, unit: ingredient.unit)
       end
+    end
       
-    #end
 
     respond_to do |format|
       if @shopping_list.save
@@ -76,7 +74,7 @@ class ShoppingListsController < ApplicationController
 
 
     def shopping_list_params
-      params.require(:shopping_list).permit(:name, {items_attributes: [:shopping_list_id, :name, :quantity, :unit]}, {meal_ids: []})
+      params.require(:shopping_list).permit(:name, {meal_ids: []})
     end
 
 end
@@ -85,3 +83,6 @@ end
 
 #meal_attributes: [:meal_ids, :name, :description, :method, :meal_image, :diet, ingredients_attributes: [:name, :quantity, :unit]]
 
+#shopping_list_id: @shopping_list.id
+
+#{items_attributes: [:shopping_list_id, :name, :quantity, :unit]}
