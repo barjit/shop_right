@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214075219) do
+ActiveRecord::Schema.define(version: 20170411072923) do
 
   create_table "ingredients", force: :cascade do |t|
     t.integer  "meal_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170214075219) do
     t.integer  "meal_image_file_size"
     t.datetime "meal_image_updated_at"
     t.integer  "diet"
+    t.integer  "shopping_list_id"
   end
 
   create_table "shopping_lists", force: :cascade do |t|
