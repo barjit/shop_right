@@ -2,6 +2,8 @@
 
 <h1>Meals</h1>
 
+<%= form_for :shopping_list, url: shopping_lists_path do |f| %>
+
 <table>
   <thead>
     <tr>
@@ -9,7 +11,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Method</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -32,23 +34,28 @@
             <%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
           </td>
+
+          <!-- This: 
+
+          <td> <#%= check_box_tag("shopping_list[meal_ids][]", meal.id) %>
+          </td>
+
+          is the equivalent of: -->
+
+          <td>
+            <input type="checkbox" name="shopping_list[meal_ids][]" value="<%= meal.id %>">
+          </td>
           
         </tr>        
       <% end %>
     </tbody>
 </table>
 
-<%= form_for :shopping_list, url: shopping_lists_path do |f| %>
-  <%= collection_check_boxes :shopping_list, :meal_ids, Meal.all, :id, :name  do |b|%>
-    <%= b.label class:"label-checkbox" do%>
-       <%=b.check_box + b.text%>
-    <%end%>
-  <% end %>
 
   <%= f.submit "Create Shopping List" %>
 <% end %>
 
-  
+
 
 <br>
 

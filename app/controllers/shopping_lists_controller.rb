@@ -79,6 +79,14 @@ class ShoppingListsController < ApplicationController
 
 end
 
+#    @shopping_list.name = prompt "What would you like to call this shopping list?"
+
+#    def prompt(*args)
+#      print(*args)
+#      gets
+#    end
+
+
 #:meal_ids => []
 
 #meal_attributes: [:meal_ids, :name, :description, :method, :meal_image, :diet, ingredients_attributes: [:name, :quantity, :unit]]
