@@ -1,0 +1,48 @@
+<%= nested_form_for(shopping_list) do |f| %>
+  <% if shopping_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shopping_list.errors.count, "error") %> prohibited this shopping_list from being saved:</h2>
+
+      <ul>
+      <% shopping_list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+<!-- Items? -->
+
+  <div class="container">
+    <hr>
+    <h3>Items</h3>
+
+    <%= f.fields_for :items do | item | %>
+      
+      <div class="field">
+        <%= item.label :name, "Name: " %>
+        <%= item.text_field :name %>
+
+        <%= item.label :quantity %>
+        <%= item.text_field :quantity %>
+
+        <%= item.label :unit %>
+        <%= item.select :unit, options_for_select([["g", "grams"], ["cups", "cups"], ["ml", "millilitres"], ["cans", "cans"], ]) %>
+        <%= item.link_to_remove "Delete item" %>
+      </div>
+
+
+    <% end %>
+  </div> 
+
+<!-- ____________________ -->
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

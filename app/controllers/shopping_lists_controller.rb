@@ -16,6 +16,12 @@ class ShoppingListsController < ApplicationController
 
 ##############################################
 
+  def edit
+    @shopping_list.items
+  end
+
+##############################################
+
   def create
 
     @shopping_list = ShoppingList.create(shopping_list_params)
@@ -74,7 +80,7 @@ class ShoppingListsController < ApplicationController
 
 
     def shopping_list_params
-      params.require(:shopping_list).permit(:name, {meal_ids: []})
+      params.require(:shopping_list).permit(:name, {meal_ids: []}, {items_attributes: [:shopping_list_id, :name, :quantity, :unit]})
     end
 
 end
