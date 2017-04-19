@@ -4,52 +4,55 @@
 
 <%= form_for :shopping_list, url: shopping_lists_path do |f| %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Method</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Method</th>
+        <th></th>
+        <th></th>
+        <th>Select</th>
+      </tr>
+    </thead>
 
 
-    <tbody>
-      <% @meals.each do |meal| %>
-        <tr>
-          <td><%= image_tag meal.meal_image(:medium) %></td>
-          <td><%= meal.name %></td>
-          <td><%= meal.description %></td>
-          <td><%= meal.method %></td>
-          <td><%= link_to 'Show', meal %></td>
-          <td>
-          <% if can? :update, Meal %>
-            <%= link_to 'Edit', edit_meal_path(meal) %>
-          <% end %>
-          </td>
-          <td>
-          <% if can? :destroy, Meal %>    
-            <%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-          </td>
+      <tbody>
+        <% @meals.each do |meal| %>
+          <tr>
+            <td><%= image_tag meal.meal_image(:medium) %></td>
+            <td><%= meal.name %></td>
+            <td><%= meal.description %></td>
+            <td><%= link_to 'Show', meal %></td>
+            <td>
+            <% if can? :update, Meal %>
+              <%= link_to 'Edit', edit_meal_path(meal) %>
+            <% end %>
+            </td>
+            <td>
+            <% if can? :destroy, Meal %>    
+              <%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+            </td>
 
-          <!-- This: 
+                                        <!-- This: 
 
-          <td> <#%= check_box_tag("shopping_list[meal_ids][]", meal.id) %>
-          </td>
+                                        <td> <#%= check_box_tag("shopping_list[meal_ids][]", meal.id) %>
+                                        </td>
 
-          is the equivalent of: -->
+                                        is the equivalent of: -->
 
-          <td>
-            <input type="checkbox" name="shopping_list[meal_ids][]" value="<%= meal.id %>">
-          </td>
-          
-        </tr>        
-      <% end %>
-    </tbody>
-</table>
+            <td class="center">
+              <input type="checkbox" name="shopping_list[meal_ids][]" value="<%= meal.id %>" >
+            </td>
+            
+          </tr>        
+        <% end %>
+      </tbody>
+  </table>
+</div>
 
 
   <%= f.submit "Create Shopping List" %>

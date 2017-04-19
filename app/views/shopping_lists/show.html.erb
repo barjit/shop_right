@@ -5,7 +5,7 @@
   <!-- Ingredients -->
 <p>
 	<strong>Ingredients:</strong>
-	<table>
+	<table class="table table-bordered table-hover">
 	  <thead>
 	    <tr>   
 	      <th>Quantity</th>
@@ -21,6 +21,7 @@
 	        <td><%= item.quantity %></td>
 	        <td><%= item.unit %></td>
 	        <td><%= item.name %></td>
+	        <td><%= link_to 'Destroy', shopping_list_item_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>
