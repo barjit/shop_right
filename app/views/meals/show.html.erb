@@ -31,7 +31,9 @@
 	        <td><%= ingredient.quantity %></td>
 	        <td><%= ingredient.unit %></td>
 	        <td><%= ingredient.name %></td>
-	        <td><%= link_to 'Destroy', :meal_ingredient, method: :delete %></td>
+	        <td>
+	        	<%= link_to 'Destroy', meal_ingredient_path(@meal, ingredient), method: :delete %>
+	        </td>
 	      </tr>
 	    <% end %>
 	  </tbody>
@@ -53,3 +55,9 @@
 <% else %>
   <%= link_to 'Back', meals_path %>
 <% end %>
+
+<!-- 
+<#%= if can? :destroy, ingredient %>
+<#% end %>
+
+-->
