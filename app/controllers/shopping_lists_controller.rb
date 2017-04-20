@@ -27,13 +27,9 @@ class ShoppingListsController < ApplicationController
     @shopping_list = ShoppingList.create(shopping_list_params)
 
     @meals = Meal.where(id:[@shopping_list.meal_ids])
-    @meals.map do |meal|
-      meal.ingredients.map do |ingredient|
-        @shopping_list.items.build(name: ingredient.name, quantity: ingredient.quantity, unit: ingredient.unit)
-      end
-    end
+    
+    create_item
       
-
     respond_to do |format|
       if @shopping_list.save
         format.html { redirect_to @shopping_list, notice: 'Shopping List was successfully created.' }
@@ -81,6 +77,14 @@ class ShoppingListsController < ApplicationController
 
     def shopping_list_params
       params.require(:shopping_list).permit(:name, {meal_ids: []}, {items_attributes: [:shopping_list_id, :name, :quantity, :unit]})
+    end
+
+    def create_item
+      @meals.map do |meal|
+        meal.ingredients.map do |ingredient|
+          @shopping_list.items.build(name: ingredient.name, quantity: ingredient.quantity, unit: ingredient.unit)
+        end
+      end
     end
 
 end
