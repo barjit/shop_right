@@ -17,7 +17,7 @@ class ShoppingListsController < ApplicationController
 ##############################################
 
   def edit
-    @shopping_list.items
+    @items = @shopping_list.items
   end
 
 ##############################################

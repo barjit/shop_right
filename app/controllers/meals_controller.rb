@@ -22,13 +22,13 @@ class MealsController < ApplicationController
 
   # GET /meals/new
   def new
-    #@meal = Meal.new
     @meal.ingredients.build
   end
 
   # GET /meals/1/edit
   def edit
     @meal.ingredients.build
+    @ingredients = Ingredient.all.select {|ingredient| ingredient.meal_id == @meal.id}
   end
 
   # POST /meals

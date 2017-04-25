@@ -9,7 +9,7 @@ class IngredientsController < ApplicationController
     @meal = Meal.find(params[:meal_id])
     @ingredient = @meal.ingredients.find(params[:id])
     @ingredient.destroy
-    redirect_to meal_path(@meal)
+    redirect_to edit_meal_path(@meal)
   end
 
   private

@@ -30,31 +30,59 @@
     <%= f.text_area :description %>
   </div>
 
-<!-- Add ingredients -->
+<!-- Ingredients -->
 
-  <div class="container">
-    <hr>
-    <h3>Add ingredients</h3>
+<p>
+  <strong>Ingredients:</strong>
+  <table>
+    <thead>
+      <tr>   
+        <th>Quantity</th>
+        <th>Unit</th>
+        <th>Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-    <%= f.fields_for :ingredients do | ingredient | %>
-      
-      <div class="field">
-        <%= ingredient.label :name %>
-        <%= ingredient.text_field :name %>
+    <tbody>
+      <% @ingredients.each do |ingredient| %>
+        <tr> 
+          <td><%= ingredient.quantity %></td>
+          <td><%= ingredient.unit %></td>
+          <td><%= ingredient.name %></td>
+          <td>
+            <%= link_to 'Destroy', meal_ingredient_path(@meal, ingredient), method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
 
-        <%= ingredient.label :quantity %>
-        <%= ingredient.text_field :quantity %>
+<!-- Adding: -->
+<p>
+<hr>
+  <h2>Add an Ingredient:</h2>
 
-        <%= ingredient.label :unit %>
-        <%= ingredient.select :unit, options_for_select([["g", "grams"], ["cups", "cups"], ["ml", "millilitres"], ["cans", "cans"], ]) %>
-        <%= link_to 'Destroy2', meal_ingredient_path(@meal, ingredient), method: :delete %>
-        <%#= ingredient.link_to_remove "Delete ingredient" %>
-      </div>
+  <%= form_for([@meal, @meal.ingredients.build]) do |ff| %>
+    
+      <%= ff.label :quantity %>
+      <%= ff.text_field :quantity %>
+        
+      <%= ff.label :unit %>
+      <%= ff.select :unit, options_for_select([["g", "grams"], ["cups", "cups"], ["ml", "millilitres"], ["cans", "cans"], ]) %>
+    
+      <%= ff.label :name %>
+      <%= ff.text_field :name %>
+    
 
-    <% end %>
-    <p><%= f.link_to_add "Add another ingredient", :ingredients %></p>
-  </div> 
+    <%= ff.submit "Add!" %>
+
+  <% end %>
+
   <hr>
+</p>
+<!-- ______________ -->
 
 <!-- ____________________ -->
 
