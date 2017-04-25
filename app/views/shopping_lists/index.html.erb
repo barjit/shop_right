@@ -17,7 +17,7 @@
           <td><%= link_to 'Show', list %></td>
           <td>
           <% if can? :update, ShoppingList %>
-            <%= link_to 'Edit', edit_shopping_list_path(list) %>
+            <%= link_to 'Edit List Name', edit_shopping_list_path(list) %>
           <% end %>
           </td>
           <td>

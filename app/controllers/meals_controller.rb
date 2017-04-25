@@ -27,14 +27,13 @@ class MealsController < ApplicationController
 
   # GET /meals/1/edit
   def edit
-    @meal.ingredients.build
     @ingredients = Ingredient.all.select {|ingredient| ingredient.meal_id == @meal.id}
   end
 
   # POST /meals
   # POST /meals.json
   def create
-    @meal = Meal.new(meal_params)
+    @meal = Meal.create(meal_params)
 
     respond_to do |format|
       if @meal.save

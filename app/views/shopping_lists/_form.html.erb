@@ -1,4 +1,4 @@
-<%= nested_form_for(shopping_list) do |f| %>
+<%= form_for(@shopping_list) do |f| %>
   <% if shopping_list.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(shopping_list.errors.count, "error") %> prohibited this shopping_list from being saved:</h2>
@@ -16,64 +16,8 @@
     <%= f.text_field :name %>
   </div>
 
-<!-- Items? -->
-
-  
-<p>
-  <strong>Ingredients:</strong>
-  <table>
-    <thead>
-      <tr>   
-        <th>Quantity</th>
-        <th>Unit</th>
-        <th>Name</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @items.each do |ingredient| %>
-        <tr> 
-          <td><%= ingredient.quantity %></td>
-          <td><%= ingredient.unit %></td>
-          <td><%= ingredient.name %></td>
-          <td>
-            <%= link_to 'Destroy', shopping_list_path(@shopping_list, ingredient), method: :delete %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</p>
-
-<!-- Adding: -->
-<p>
-<hr>
-  <h2>Add an Ingredient:</h2>
-
-  <%= form_for([@shopping_list, @shopping_list.items.build]) do |ff| %>
-    
-      <%= ff.label :quantity %>
-      <%= ff.text_field :quantity %>
-        
-      <%= ff.label :unit %>
-      <%= ff.select :unit, options_for_select([["g", "grams"], ["cups", "cups"], ["ml", "millilitres"], ["cans", "cans"], ]) %>
-    
-      <%= ff.label :name %>
-      <%= ff.text_field :name %>
-    
-
-    <%= ff.submit "Add!" %>
-
-  <% end %>
-
-  <hr>
-</p>
-<!-- ______________ -->
-
-<!-- ____________________ -->
-
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

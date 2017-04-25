@@ -45,6 +45,7 @@ class ShoppingListsController < ApplicationController
 ##############################################
 
   def update
+
     respond_to do |format|
       if @shopping_list.update(shopping_list_params)
         format.html { redirect_to @shopping_list, notice: 'Shopping List was successfully updated.' }
@@ -60,6 +61,7 @@ class ShoppingListsController < ApplicationController
 
   def destroy
     @shopping_list.destroy
+
     respond_to do |format|
       format.html { redirect_to shopping_lists_url, notice: 'Shopping List was successfully destroyed.' }
       format.json { head :no_content }
@@ -76,7 +78,7 @@ class ShoppingListsController < ApplicationController
 
 
     def shopping_list_params
-      params.require(:shopping_list).permit(:name, {meal_ids: []}, {items_attributes: [:shopping_list_id, :name, :quantity, :unit]})
+      params.require(:shopping_list).permit(:name, {meal_ids: []}, items_attributes: [:name, :quantity, :unit])
     end
 
     def create_item
@@ -97,10 +99,3 @@ end
 #    end
 
 
-#:meal_ids => []
-
-#meal_attributes: [:meal_ids, :name, :description, :method, :meal_image, :diet, ingredients_attributes: [:name, :quantity, :unit]]
-
-#shopping_list_id: @shopping_list.id
-
-#{items_attributes: [:shopping_list_id, :name, :quantity, :unit]}
