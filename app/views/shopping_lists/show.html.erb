@@ -21,7 +21,7 @@
 	        <td><%= item.quantity %></td>
 	        <td><%= item.unit %></td>
 	        <td><%= item.name %></td>
-	        <td><%= link_to 'Destroy', shopping_list_item_path(@shopping_list, item), method: :delete %></td>
+	        <td><%= link_to 'Remove', shopping_list_item_path(@shopping_list, item), method: :delete %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>
