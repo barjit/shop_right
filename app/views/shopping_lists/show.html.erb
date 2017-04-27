@@ -35,7 +35,7 @@
 			<%= f.text_field :quantity %>
 				
 			<%= f.label :unit %>
-			<%= f.select :unit, options_for_select([["g", "grams"], ["cups", "cups"], ["ml", "millilitres"], ["cans", "cans"], ]) %>
+			<%= f.select :unit, options_for_select([["g", "grams"], ["cups", "cups"], ["ml", "millilitres"], ["cans", "cans"], ]), include_blank: "Please select unit:"  %>
 		
 			<%= f.label :name %>
 			<%= f.text_field :name %>

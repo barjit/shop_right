@@ -42,7 +42,8 @@
       <%= ff.text_field :quantity %>
         
       <%= ff.label :unit %>
-      <%= ff.select :unit, options_for_select([["g", "grams"], ["cups", "cups"], ["ml", "millilitres"], ["cans", "cans"], ]), include_blank: "Please select unit" %>
+      <%= ff.select :unit, options_for_select([["g", "grams"], ["cups", "cups"], ["ml", "millilitres"], ["cans", "cans"]], ff.object.unit), 
+                           include_blank: "Please select unit:" %>
     
       <%= ff.label :name %>
       <%= ff.text_field :name %>
@@ -65,7 +66,7 @@
 
   <div class="field">
     <%= f.label :diet %><br />
-    <%= f.select :diet, options_for_select([["Omnivore", "omnivore"],["Vegetarian", "vegetarian"], ["Vegan", "vegan"], ["Paleo", "paleo"]]) %>
+    <%= f.select :diet, options_for_select([["Omnivore", "omnivore"],["Vegetarian", "vegetarian"], ["Vegan", "vegan"], ["Paleo", "paleo"]], f.object.diet) %>
   </div>
 
   <div class="actions">
