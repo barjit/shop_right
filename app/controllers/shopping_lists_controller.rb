@@ -30,15 +30,13 @@ class ShoppingListsController < ApplicationController
     
     create_item
       
-    respond_to do |format|
       if @shopping_list.save
-        format.html { redirect_to @shopping_list, notice: 'Shopping List was successfully created.' }
-        format.json { render :show, status: :created, location: @shopping_list }
+        redirect_to edit_shopping_list_path(@shopping_list), notice: 'Shopping List was successfully created.' 
+        
       else
-        format.html { render :new }
-        format.json { render json: @shopping_list.errors, status: :unprocessable_entity }
+        render :new
+
       end
-    end 
 
   end
 
