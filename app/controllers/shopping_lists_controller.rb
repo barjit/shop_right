@@ -12,6 +12,8 @@ class ShoppingListsController < ApplicationController
 
   def show
     @items = @shopping_list.items
+
+    #dups = @shopping_list.items.group_by{|item| item}.keep_if{|_, e| e.name > 1}
   end
 
 ##############################################
@@ -30,13 +32,11 @@ class ShoppingListsController < ApplicationController
     
     create_item
       
-      if @shopping_list.save
-        redirect_to edit_shopping_list_path(@shopping_list), notice: 'Shopping List was successfully created.' 
-        
-      else
-        render :new
-
-      end
+    if @shopping_list.save
+      redirect_to edit_shopping_list_path(@shopping_list), notice: 'Shopping List was successfully created.' #redirect to shopping_list edit page so that user can input list name.
+    else
+      render :new
+    end
 
   end
 
