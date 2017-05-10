@@ -27,6 +27,7 @@ end
 
 group :test do
   gem 'rails-controller-testing', '0.1.1'
+  #also added
   gem 'minitest-reporters',       '1.1.9'
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
@@ -40,8 +41,7 @@ gem 'paperclip'
 gem 'cancancan'
 gem 'bootstrap-sass', '3.3.6'
 gem 'nested_form_fields'
-
-
+gem 'seed_dump'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
