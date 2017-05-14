@@ -1,8 +1,11 @@
-User.create!([
+u = User.new([
   {email: "admin@test.com", encrypted_password: "$2a$11$8ti8Za4pFnCzb0T.ofavvO53sEjqAouDDl6HABE9K54/ZGQU7t1sy", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 47, current_sign_in_at: "2017-05-10 09:11:24", last_sign_in_at: "2017-05-03 12:18:51", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", first_name: "Jeffrey", last_name: "Bartels", admin_role: true, user_role: true, preference: "omnivore"},
   {email: "ed@test.com", encrypted_password: "$2a$11$ihSDo3QEJGQnYjobkeufTeuSQ41fQ8XH1AQ8B8zvHxUI6Gbh2MfPu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2017-02-27 07:26:41", last_sign_in_at: "2017-02-27 07:26:41", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", first_name: "Ed", last_name: "Harnett", admin_role: nil, user_role: nil, preference: "vegetarian"},
   {email: "adam@test.com", encrypted_password: "$2a$11$GxaRM6MFtZd2dTXP2Q1wlOtXP6.IXnaOp9lWiCHiRxraAmsSOg6uG", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 5, current_sign_in_at: "2017-04-18 11:30:13", last_sign_in_at: "2017-04-16 05:54:32", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", first_name: "Adam", last_name: "Silva", admin_role: nil, user_role: nil, preference: "vegetarian"}
 ])
+
+u.save!(validate: false)
+
 Ingredient.create!([
   {meal_id: 1, name: "Baby Spinach", quantity: 150.0, unit: "millilitres"},
   {meal_id: 1, name: "Grated Cheese", quantity: 1.0, unit: "cups"},
